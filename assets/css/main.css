@@ -29,6 +29,12 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;}
 
+.intro header .logo {
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+}
+
 body {
 	line-height: 1;
 }
