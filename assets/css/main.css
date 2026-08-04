@@ -30,7 +30,7 @@ footer, header, hgroup, menu, nav, section {
 	display: block;}
 
 .intro header .logo {
-    max-width: 600px;
+    max-width: 700px;
     width: 100%;
     height: auto;
 }
@@ -3442,6 +3442,11 @@ input, select, textarea {
 			width: 20rem;
 		}
 
+			#wrapper > section.intro > header > .logo {
+				max-width: 32rem;
+				width: 100%;
+			}
+
 		#wrapper > section.intro > header:before {
 			margin-left: calc(50vw - 10rem);
 		}
@@ -3514,6 +3519,11 @@ input, select, textarea {
 				#wrapper > section.intro > header > * {
 					width: 21rem;
 				}
+
+					#wrapper > section.intro > header > .logo {
+						max-width: 30rem;
+						width: 100%;
+					}
 
 				#wrapper > section.intro > header:before {
 					margin-left: calc(50vw - 8rem);
