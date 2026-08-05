@@ -3678,7 +3678,8 @@ input, select, textarea {
 							}
 
 							#wrapper > section.intro > header > ul.actions {
-								margin-left: -1rem;
+								justify-content: center;
+								margin-left: 0;
 							}
 
 							#wrapper > section.intro > header:before {
