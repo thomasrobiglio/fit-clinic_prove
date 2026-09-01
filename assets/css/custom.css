@@ -1,9 +1,62 @@
 /* Custom overrides for FIT CLINIC — loaded after main.css */
 
+/* Text column width ------------------------------------------------------ */
+
+/* Sections are a "header | content" grid of 50vw + 50vw. The header holds the
+   text and is right-aligned into its column, with generous internal padding:
+   35rem wide minus 10rem/5rem padding leaves only 20rem of text (17rem in the
+   description sub-sections).
+
+   We widen the text by trimming ONLY the left padding, never the right.
+   padding-right is load-bearing: it sets the heading's right edge, and the
+   dash/dot markers hang off that edge (right: -5rem / -2.5rem) to meet the
+   vertical rule, which main.css pins independently at left: calc(50vw - 5rem).
+   Changing padding-right desynchronises the two and breaks the line.
+   padding-left has no decoration attached — with text-align:right it only ever
+   capped the maximum line length — so all the gain comes from there.
+
+   The intro is excluded via :not(.intro). Regular sections pin their vertical
+   rule with left: calc(50vw - 5rem), which ignores padding, but the intro
+   overrides that with left:auto + margin-left, so its rule falls back to the
+   pseudo-element's STATIC position — the header's content-box left edge, which
+   padding-left moves. Trimming the intro's padding slides its rule out of line
+   with every other section's and splits the continuous vertical line in two. */
+
+/* Step 1: reclaim all of the left padding. Higher specificity than main.css's
+   padding shorthand, so this holds at every breakpoint, and below 1152px
+   main.css zeroes the padding anyway. */
+
+	#wrapper section:not(.intro) > header {
+		padding-left: 0;
+	}
+
+/* Step 2: widen the header box itself for the rest of the gain. justify-self:
+   end pins the right edge at 50vw, so the box grows leftward only and no
+   decoration moves. The vw cap is what keeps it inside its own 50vw column:
+   this breakpoint starts at 1281px, where 50vw is just ~37rem, so a flat 38rem
+   would overflow off-screen on a 1281–1400px window. min() takes the vw value
+   there and the rem value on wider screens.
+
+   Guarded with min-width so it can never leak into the stacked single-column
+   layouts below 1152px, where main.css sets these headers to width: 100%. */
+
+	@media screen and (min-width: 1281px) {
+
+		#wrapper > section:not(.intro) > header {
+			width: min(38rem, 48vw);
+		}
+
+		#wrapper > section > .content > section > header {
+			width: min(35rem, 45vw);
+		}
+
+	}
+
 /* Logo ------------------------------------------------------------------ */
 
-/* main.css already sizes the logo responsively (32rem, 30rem below 1280px)
-   via a higher-specificity selector, so only the height needs setting. */
+/* main.css already sizes the logo responsively via a higher-specificity
+   selector, and the intro's padding is now left untouched, so the logo needs
+   no width pinning — only the height. */
 
 	#wrapper > section.intro > header > .logo {
 		height: auto;
