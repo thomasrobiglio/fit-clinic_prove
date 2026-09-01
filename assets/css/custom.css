@@ -2,9 +2,10 @@
 
 /* Logo ------------------------------------------------------------------ */
 
+/* main.css already sizes the logo responsively (32rem, 30rem below 1280px)
+   via a higher-specificity selector, so only the height needs setting. */
+
 	#wrapper > section.intro > header > .logo {
-		max-width: 700px;
-		width: 100%;
 		height: auto;
 	}
 
@@ -12,12 +13,33 @@
 
 /* main.css pins every intro header child to a fixed 20rem/21rem column,
    which forces the tagline to wrap. Size it to its own content instead so
-   it stays on one line whenever the column has room, and never overflows. */
+   it stays on one line when it fits, capped to the logo's width so it never
+   breaks out of the intro column. */
 
 	#wrapper > section.intro > header > .tagline {
 		width: max-content;
-		max-width: 100%;
+		max-width: 32rem;
 		text-wrap: balance;
+	}
+
+	@media screen and (max-width: 1280px) {
+
+		#wrapper > section.intro > header > .tagline {
+			max-width: 30rem;
+		}
+
+	}
+
+/* Below 1152px main.css gives the header children full width; let the
+   tagline do the same rather than sitting in a narrow max-content box. */
+
+	@media screen and (max-width: 1152px) {
+
+		#wrapper > section.intro > header > .tagline {
+			width: 100%;
+			max-width: none;
+		}
+
 	}
 
 /* Section copy ----------------------------------------------------------- */
