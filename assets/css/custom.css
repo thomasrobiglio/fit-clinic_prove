@@ -1,0 +1,46 @@
+/* Custom overrides for FIT CLINIC — loaded after main.css */
+
+/* Logo ------------------------------------------------------------------ */
+
+	#wrapper > section.intro > header > .logo {
+		max-width: 700px;
+		width: 100%;
+		height: auto;
+	}
+
+/* Intro tagline ---------------------------------------------------------- */
+
+/* main.css pins every intro header child to a fixed 20rem/21rem column,
+   which forces the tagline to wrap. Size it to its own content instead so
+   it stays on one line whenever the column has room, and never overflows. */
+
+	#wrapper > section.intro > header > .tagline {
+		width: max-content;
+		max-width: 100%;
+		text-wrap: balance;
+	}
+
+/* Section copy ----------------------------------------------------------- */
+
+/* Justify the descriptive paragraphs. Hyphenation keeps justified text from
+   opening up rivers of whitespace in the narrow columns. */
+
+	#wrapper > section > .content > p,
+	#wrapper > section > .content > section > header > p {
+		text-align: justify;
+		hyphens: auto;
+		-webkit-hyphens: auto;
+		-ms-hyphens: auto;
+	}
+
+/* Below the tablet breakpoint the columns get too narrow for justification
+   to look good, so fall back to ragged-right. */
+
+	@media screen and (max-width: 736px) {
+
+		#wrapper > section > .content > p,
+		#wrapper > section > .content > section > header > p {
+			text-align: left;
+		}
+
+	}
