@@ -1,2 +1,6 @@
 /.quarto/
 **/*.quarto_ipynb
+
+# Full-resolution photo originals. Kept locally as the master copies; only the
+# web-optimised versions in foto/ are tracked. See README.md.
+/foto/originali/

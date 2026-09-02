@@ -35,7 +35,7 @@
 			$('.image[data-position]').each(function() {
 
 				var $this = $(this),
-					$img = $this.children('img');
+					$img = $this.find('img');
 
 				// Apply img as background.
 					$this
@@ -53,7 +53,7 @@
 			$('.gallery > a').each(function() {
 
 				var $this = $(this),
-					$img = $this.children('img');
+					$img = $this.find('img');
 
 				// Apply img as background.
 					$this
