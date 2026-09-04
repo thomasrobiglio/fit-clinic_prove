@@ -23,11 +23,23 @@
    with every other section's and splits the continuous vertical line in two. */
 
 /* Step 1: reclaim all of the left padding. Higher specificity than main.css's
-   padding shorthand, so this holds at every breakpoint, and below 1152px
-   main.css zeroes the padding anyway. */
+   padding shorthand, so it wins wherever it applies.
 
-	#wrapper section:not(.intro) > header {
-		padding-left: 0;
+   MUST stay behind min-width: 1153px. The reasoning above only holds in the
+   two-column grid, where the header is right-aligned into its own 50vw column
+   and padding-left merely caps line length. At 1152px and below main.css
+   restacks the sections into one column, makes the header a full-width banded
+   block with text-align: left, and re-applies symmetric padding at each
+   breakpoint (4rem at 1152px, 2rem at 736px, 1.5rem at 360px). Unscoped, this
+   rule cancels the left half of that padding and the section titles sit flush
+   against the edge of the screen. */
+
+	@media screen and (min-width: 1153px) {
+
+		#wrapper section:not(.intro) > header {
+			padding-left: 0;
+		}
+
 	}
 
 /* Step 2: widen the header box itself for the rest of the gain. justify-self:
